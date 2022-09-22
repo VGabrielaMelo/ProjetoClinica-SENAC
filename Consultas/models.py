@@ -79,3 +79,10 @@ class Medico(models.Model):
     # Função padrão de classe para transformar uma classe em texto
     def __str__(self):
         return self.nome
+
+    especialidade = models.ForeignKey(
+        Especialidade,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True
+    )
