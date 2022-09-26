@@ -1,134 +1,141 @@
 # Django
-Projeto do curso de Django
+Projeto feito com Django
 
-A proposta deste projeto é construir uma aplicação web para atender uma clinica
+A proposta deste projeto é construir uma aplicação web irá atender uma clinica
 
-O objetibo é desenvolver as seguintes telas:
+O objetivo é desenvolver as seguintes telas:
 
 - Médicos
 - Especialidades
 - Procedimentos
 - Consultas
 
-## Preparar o ambiente
-
-- Instalação do venv
-
+## Preparar o ambiante
+- Instalando o venv
 ```
-python -m venv venv
+    python -m venv venv
 ```
 
-- Ativar o ambiente virtual (venv)
-
+- Ativando o venv
 ```
-.\venv\Scripts\activate.bat
+    .\venv\script\activate
 ```
 
 - Instalação do Django
-
 ```
-pip install django
-```
-
-- Colocando as versões do pacote em um arquivo .txt (Comando opcional)
-
-```
-pip freeze > requirents.txt
+    pip install django
 ```
 
-## Estruturação do Projeto 
-1. Criar o projeto 
-NOTE: Projeto é o local que o motor do DJango é executado, com isso as configurações são feitas dentro dele, 
-utilizando o arquivo settings.py. 
-
+- (OPCIONAL) Colocando as versões do pacote em um arquivo .txt
 ```
-django-admin startproject -nome do projeto- .
+    pip freeze > requirents.txt
 ```
 
-- django-admin: comando de terminal responsável pela administração do DJango
-- startproject: parametro do comando django-admin responsável por estruturar um projeto em DJango.
-    É obrigatório informar o nome do projeto (neste caso "clinica").
-    Como próximo parâmetro é o diretório que será estruturado o projeto, que a sugestão é informar o caminho relatório
-    do diretório local ".".
+## Estruturação do Projeto
+1. Criar o projeto
+> NOTE: Projeto é o local que o motor do Django é executado, com isso as configurações são feitas dentro dele, utilizando o arquivo settings.py
+
+```
+   django-admin startproject (nome-do-projeto) .
+```
+
+- django-admin: comando de terminal responsável pela administração do Django
+- startproject: Parametro do comando django-admin responsável por estruturar um projeto em django
+    È obrigatório o nome do projeto (neste caso "clinica")
+    Como proximo parametro é o diretório que será executado o projeto, que a sugestão é informar o caminho relativo do diretório local "."
 
 ## Iniciar o serviço web
 ```
-python -m manage runserver
+    python -m manage runserver
 ```
-- manage: módulo do DJango responsável por executar ações dentro do projeto.
-- runserver: parâmetro que determina a execução do módulo web disponível dentro do DJango para desenvolvimento.
 
-O site estará disponível no endereço http://127.0.0.1:8000/
+- manage: Módulo do Django responsável por executar ações dentro do projeto
+- runserver: Parametro que determina a execução do módulo web disponível dentro do Django para desenvolvimento
+
+O site estará disponivel no endereço "http://127.0.0.1:8000/"
 
 2. Criar um APP
-NOTE: o APP (aplicação) será o local no DJango que será implementado toda a lógica. Lembrando que um projeto pode ser
-vários APPs. 
+> NOTE: O APP (aplicação) será o local no Django que setá implementado toda a lógica. Lembrando que um projeto pode ter vários APPs.
 
 ```
-python -m manage startapp -nome da pasta-
+   python -m manage startapp consultas
 ```
 
-- Clinica: pasta que contem os arquivos do projeto.
-- Consultas: pasta que trata os arquivos da aplicação.
+clinica: pasta que contem os arquivos do projeto
+consultas: pasta que trata os arquivos da aplicação
 
-## Adicionando o APP ao projeto
-É necessário entrar no arquivo settings.py e localizar a constante "INSTALLED_APPS".
-A constante "INSTALLED_APPS" é uma lista que contem todos os APPs associados ao projeto, somente após um APP estar 
-relacionado nesta lista que o DJango pode identificar e utilizar o APP nos demais fins. 
+## Adicionando o APP ao Projeto
+È necessário entrar no arquivo settings.py e localizar a constante "INSTALLED_APPS".
+A contante "INSTALLED_APPS" é uma lista que contem todos os APPs associados ao projeto, somente após um APP estar relacionado nesta lista que o Django pode identificar e utilizar o APP nos demais fins.
 
-Verificando os SQLs do migrations
+fazendo um migration
 
 ```
-python -m manage sqlmigrate consultas 0001
+    python -m manage migrations consultas
 ```
 
-> IMPORTANTE: configurar o TIME_ZONE para que a aplicação seja executade com o horário local. 
+verificando os SQLs do migrations
 
+```
+    python -m manage sqlmigrate consultas 0001
+```
+
+> IMPORTANTE: configure o TIME_ZONE para que aplicação seja executada com o horário local
+> https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+> Configurar o linguagem da aplicação no LANGUAGE_CODE
+> http://www.i18nguy.com/unicode/language-identifiers.html
 
 > Configurar a linguagem da aplicação no LANGUAGE_CODE
-```
-LANGUAGE_CODE = "pt-br"
-
-TIME_ZONE = "America/Sao_Paulo"
-```
-
-## Registrar o APP á aplicação admin
-A aplicação admin é uma interface gerada de maneira automática pelo DJango, que utiliza o modelo desenvolvido na aplicação, para
-criar uma interface básica de gestão, ou seja, uma tela de lista, detalhes, inclusão, atuaçização e exclusão.
 
 ```
-C -> Create (Criar)
-R -> Read (Ler)
-U -> Update (Atualizar)
-D -> Delete (Excluir)
+    LANGUAGE_CODE = 'pt_br'
+
+    TIME_ZONE = 'America/Sao_Paulo'
 ```
 
-Para registrar a aplicação é necessário localizar o arquivo consultas/admin.py e incluir os comandos de registros do modelo.
+## Registrar o APP a aplicação admin
+A aplicação admin é uma interface gerada de maneira automática pelo Django, que utiliza o modelo desenvolvido na aplicação, para criar uma interface básica de gestão, ou seja uma tela de lista, detalhes, inclusão, atualização, exclusão.
+
+```
+C => Create (Criar)
+R => Read (Ler)
+U => Update (Atualizar)
+D => Delete (Excluir)
+```
+
+Para registrar a aplicação é necessário o arquivo consultas/admin.py e incluir os comandos de registro do modelo(MODELS)
 
 ## Cadastrar o super usuário (admin)
-Para acessar a tela de admin é necessário que se tenha um usuáriodevidamente registrado na aplicação.
+Para acessar a tela de admin é necessário que se tenha um usuário devidamente registrado na aplicação
 
 ```
-python -m manage createsuperuser
+    python -m manage createsuperuser 
 ```
 
-- createsuperuser: é o comando utilizado para criar o usuário administrativo da aplicação.
+- createsuperuser: é o comando utilizado para criar o usuário administrativo da aplicação
 
-## Migration 
-O migration (migrações) é o ato de capturar o modelo de dados desenvolvimento em uma camada de aplicação, é preprarar os códigos necessários para criar o banco de dados.
+## Migration
+O migration (migrações) é o ato da capturar o modelo de dados desenvolvido em uma camada de aplicação, a preparar os códigos necessários para criar o banco de dados.
 
-> IMPORTANTE: o migrate não está vinculado a nenhum banco de dados específico   
+> IMPORTANTE: O migrate não está vinculado a nenhum banco de dados especifico
 
 ```
-python -m manage makemigrations consultas
+    python -m manage makemigrations consultas
 ```
 
-- makemigrations: é o comando responsável pela preparação do modelo que será implantado no banco de dados.
-    - como parâmetro é necessário informar o nome da aplicação.
+- makemigrations: é o comando responsavel pela preparacao do modelo que sera implementdo no banco de dados.
+    como parametro é necessário informar o nome da aplicação
 
-Após a execução deste comando, a pasta migrations é criada dentro da aplicação (consultas/migrations)
+Após a execução deste comando, a pasta migrations e criada dentro da aplicação (consulta/migrations)
 
-- migrate: é o comando responsável por aplicar a estrutura criado pelo makemigration.
+- migrate: é o comando responsavel por aplicar a estrutura criada pelo makemigration
+
 ```
-python -m manage migrate consultas
+    python -m manage migrate consultas
 ```
+## URLconf
+A URLconf é um termo utilizado para tratar as arquivos url.py. Este arquivo está presente no projeto e na aplicação
+
+O comando startapp não cria o arquivo url.py na aplicação, a necessário criar o arquivo.
+
+> IMPORTANTE: O arquivo deve contar obrigatoriamente uma variável chamada urlpatterns
