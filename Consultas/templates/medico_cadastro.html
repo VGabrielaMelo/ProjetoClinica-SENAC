@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Médico</title>
+</head>
+<body>
+    <!-- O comando csrf_token é responsável por aplicar uma camada de segurança aos formulários
+    O nome desta técnica é Cross Site Request Forgery Protection, que garante que somente as requisições originadas pelo servidor sejam aceitas como um retorno de formulário -->
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" required>
+        <br>
+
+        <label for="email">E-mail:</label>
+        <input type="text" name="email" id="email" required>
+        <br>
+
+        <label for="cpf">CPF:</label>
+        <input type="text" name="cpf" id="cpf">
+        <br>
+
+        <label for="crm">CRM:</label>
+        <input type="text" name="crm" id="crm">
+        <br>
+
+        <label for="data_nascimento">Data Nascimento:</label>
+        <input type="date" name="data_nascimento" id="data_nascimento">
+        <br>
+
+        <label for="cidade">Cidade:</label>
+        <input type="text" name="cidade" id="cidade">
+        <br>
+
+        <label for="uf">UF:</label>
+        <input type="text" name="uf" id="uf" maxlength="2">
+        <br>
+
+        <label for="especialidade">Especialidade</label>
+        <select name="especialidade" id="especialidade" required>
+            <option value="" selected disabled>Escolha uma Especialidade</option>
+            {% for especialidade in especialidades %}
+            <option value="{{especialidade.codigo}}">{{especialidade.nome}}</option>
+            {% endfor %}
+        </select>
+        <br>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a href="{% url 'medicos' %}">Voltar</a>
+</body>
+</html>

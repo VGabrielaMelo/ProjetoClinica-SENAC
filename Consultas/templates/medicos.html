@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Página de Médicos</title>
 </head>
 <body>
@@ -13,8 +12,14 @@
     {# A chave do dicionário (contexto) é utilizado com o variável do motor #}
 
     {% for medico in medicos %}
-    <li>{{medico.nome}}</li>        
+    <li><a href="{% url 'medico_detalhes' id_medico=medico.id %}">{{medico.nome}}</a></li>        
     {% endfor %}
-
+    <a href="{% url 'medico_cadastrar' %}">Cadastrar</a>
+    <span>|</span>
+    <a href="{% url 'especialidades' %}">Ver Especialidades</a>
+    <span>|</span>
+    <a href="{% url 'procedimentos' %}">Ver Procedimentos</a>
+    <span>|</span>
+    <a href="{% url 'consultas' %}">Ver Consultas</a>
 </body>
 </html>

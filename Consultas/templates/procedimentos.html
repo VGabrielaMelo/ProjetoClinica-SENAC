@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Página de Procedimentos</title>
+    </head>
+    <body>
+        <h1>Todos os Procedimentos</h1>
+
+        {# A chave do dicionário (contexto) é utilizado com o variável do motor #} 
+        {% for procedimento in procedimentos %}
+        <li>
+            <a
+                href="{% url 'procedimento_detalhes' codigo_procedimento=procedimento.codigo %}"
+                >{{procedimento.nome}}</a
+            >
+        </li>
+        {% endfor %}
+
+        <a href="{% url 'procedimento_cadastrar' %}">Cadastrar</a>
+        <span>|</span>
+        <a href="{% url 'medicos' %}">Voltar</a>
+    </body>
+</html>

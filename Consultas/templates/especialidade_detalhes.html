@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhes Especialidade</title>
+    </head>
+
+    <body>
+        <h2>Detalhes do Especialidade</h2>
+
+        <table>
+            <tr>
+                <th>Código</th>
+                <td>{{especialidade.codigo}}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{especialidade.nome}}</td>
+            </tr>
+            <tr>
+                <th>Descrição</th>
+                <td>{{especialidade.descricao}}</td>
+            </tr>
+        </table>
+
+        <a href="{% url 'especialidades' %}">voltar</a>
+    </body>
+</html>

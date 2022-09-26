@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cadastro Consulta</title>
+    </head>
+    <body>
+        <!-- O comando csrf_token é responsável por aplicar uma camada de segurança aos formulários
+    O nome desta técnica é Cross Site Request Forgery Protection, que garante que somente as requisições originadas pelo servidor sejam aceitas como um retorno de formulário -->
+
+        <form method="post">
+            {% csrf_token %}
+
+            <label for="data">Data Consulta:</label>
+            <input type="date" name="data" id="data" required/>
+
+            <br />
+
+            <label for="medico">Medico</label>
+            <select name="medico" id="medico" required>
+                <option value="" selected disabled>Escolha uma Medico</option>
+
+                {% for medico in medicos %}
+                <option value="{{medico.id}}">{{medico.nome}}</option>
+                {% endfor %}
+            </select>
+
+            <br />
+
+            <label for="laudo">Laudo:</label>
+            <br />
+            <textarea name="laudo" id="laudo" cols="30" rows="10"></textarea>
+            <br />
+
+            <label for="procedimentos">procedimentos:</label>
+            <br>
+            <select name="procedimentos" id="procedimentos" multiple>
+                {% for procedimento in procedimentos %}
+                <option value="{{procedimento.codigo}}">
+                    {{procedimento.nome}}
+                </option>
+                {% endfor %}
+            </select>
+
+            <br />
+
+            <button type="submit">Salvar</button>
+        </form>
+        <a href="{% url 'medicos' %}">Voltar</a>
+    </body>
+</html>

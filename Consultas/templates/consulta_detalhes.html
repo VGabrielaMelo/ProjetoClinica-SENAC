@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhes Consulta</title>
+    </head>
+
+    <body>
+        <h2>Detalhes da consulta</h2>
+
+        <table>
+            <tr>
+                <th>Código</th>
+                <td>{{consulta.codigo}}</td>
+            </tr>
+            <tr>
+                <th>Data</th>
+                <td>{{consulta.data}}</td>
+            </tr>
+            <tr>
+                <th>Laudo</th>
+                <td>{{consulta.laudo}}</td>
+            </tr>
+            <tr>
+                <th>Médico</th>
+                <td>{{consulta.medico}}</td>
+            </tr>
+            <tr>
+                <th>Procedimentos</th>
+               
+                <td>
+                    {% for procedimento in procedimentos %}
+                    <strong>{{procedimento.nome}}</strong>
+                    {% endfor %}
+                </td>
+                
+            </tr>
+        </table>
+
+        <a href="{% url 'consultas' %}">Voltar</a>
+    </body>
+</html>

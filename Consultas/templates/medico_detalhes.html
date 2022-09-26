@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes Médico</title>
+</head>
+
+<body>
+    <h2>Detalhes do Médico</h2>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <td>{{medico.nome}}</td>
+        </tr>
+        <tr>
+            <th>CPF</th>
+            <td>{{medico.cpf}}</td>
+        </tr>
+        <tr>
+            <th>CRM</th>
+            <td>{{medico.crm}}</td>
+        </tr>
+        <tr>
+            <th>Data Nascimento</th>
+            <td>{{medico.data_nascimento}}</td>
+        </tr>
+        <tr>
+            <th>Cidade</th>
+            <td>{{medico.cidade}}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{medico.email}}</td>
+        </tr>
+        <tr>
+            <th>Especialidade</th>
+            <td>{{medico.especialidade}}</td>
+        </tr>
+
+    </table>
+    <a href="{% url 'medicos' %}">Voltar</a>
+</body>
+
+</html>
