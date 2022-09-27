@@ -238,3 +238,4 @@ def consulta_cadastro(request):
         return HttpResponseRedirect(reverse('consultas'))
 
     return render(request, 'consulta_cadastro.html', contexto)
+    

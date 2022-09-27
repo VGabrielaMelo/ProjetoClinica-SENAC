@@ -18,6 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     # incluindo rotas do app no projeto
-    path('clinica/', include('Consultas.urls')),
+    path('consultas/', include('Consultas.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -53,7 +53,7 @@ class Medico(models.Model):
     # DateField: tipo de atributo que representa uma data
     data_nascimento = models.DateField(
         null = True,
-        blank = True,
+        blank = True
     )
 
     cidade = models.CharField(
@@ -127,4 +127,3 @@ class Consultas(models.Model):
 
     def __str__(self):
         return f"Consulta {self.codigo}"
-
